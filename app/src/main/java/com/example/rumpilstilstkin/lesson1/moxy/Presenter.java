@@ -30,7 +30,7 @@ public class Presenter extends MvpPresenter<MoxyExampleView> {
         return currentValue + 1;
     }
 
-    public void buttonClick(final int btnIndex) {
+    void buttonClick(final int btnIndex) {
         int newModelValue;
         newModelValue = calcNewModelValue(btnIndex);
         mModel.setElementValueAtIndex(btnIndex, newModelValue);
