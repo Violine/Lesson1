@@ -10,8 +10,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.rumpilstilstkin.lesson1.R;
 
 
-public class MoxyMainActivity extends MvpAppCompatActivity
-        implements MoxyExampleView, View.OnClickListener {
+public class MoxyMainActivity extends MvpAppCompatActivity implements MoxyExampleView {
 
     @InjectPresenter
     Presenter presenter;
@@ -24,29 +23,39 @@ public class MoxyMainActivity extends MvpAppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnCounter1 = (Button) findViewById(R.id.btnCounter1);
-        btnCounter2 = (Button) findViewById(R.id.btnCounter2);
-        btnCounter3 = (Button) findViewById(R.id.btnCounter3);
-        btnCounter1.setOnClickListener(this);
-        btnCounter2.setOnClickListener(this);
-        btnCounter3.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        presenter.buttonClick(v.getId());
+        btnCounter1 = findViewById(R.id.btnCounter1);
+        btnCounter2 = findViewById(R.id.btnCounter2);
+        btnCounter3 = findViewById(R.id.btnCounter3);
+        btnCounter1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.buttonClick(0);
+            }
+        });
+        btnCounter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.buttonClick(1);
+            }
+        });
+        btnCounter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.buttonClick(2);
+            }
+        });
     }
 
     @Override
     public void setButtonText(int btnIndex, int value) {
         switch (btnIndex) {
-            case 1:
+            case 0:
                 btnCounter1.setText("Количество = " + value);
                 break;
-            case 2:
+            case 1:
                 btnCounter2.setText("Количество = " + value);
                 break;
-            case 3:
+            case 2:
                 btnCounter3.setText("Количество = " + value);
                 break;
         }
