@@ -50,13 +50,13 @@ public class MoxyMainActivity extends MvpAppCompatActivity implements MoxyExampl
     public void setButtonText(int btnIndex, int value) {
         switch (btnIndex) {
             case 0:
-                btnCounter1.setText("Количество = " + value);
+                btnCounter1.setText(String.format(getString(R.string.summ), value));
                 break;
             case 1:
-                btnCounter2.setText("Количество = " + value);
+                btnCounter2.setText(String.format(getString(R.string.summ), value));
                 break;
             case 2:
-                btnCounter3.setText("Количество = " + value);
+                btnCounter3.setText(String.format(getString(R.string.summ), value));
                 break;
         }
     }
